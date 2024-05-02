@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .box {
+      background-color: beige;
+    }
+    .modal {
+      background: #f9f9f9;
+      /* width: 600px; */
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+      border-radius: 30px;
+      box-shadow: 0 0 32px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+    }
+    .close {
+      display: none;
+    }
+    .fondo_transparente {
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.226);
+      position: absolute;
+      height: 100vh;
+      width: 100%;
+      display: none;
+    }
+  </style>
+  <body>
+    <div class="box">
+      <input type="radio" name="radio-check-1" id="radio-check" />
+      <label for="radio-check">acepto</label>
+    </div>
+    <div class="fondo_transparente" id="venta_modal">
+      <div class="modal close">
+        <p>Test Modal</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
+          voluptatum eos dignissimos molestias veniam autem, facilis sint.
+          Adipisci, veniam deserunt!
+        </p>
+        <button class="boton">Click Me</button>
+      </div>
+    </div>
+    <div class="box-text">
+      <p class="texto"></p>
+    </div>
+  </body>
+  <script>
+    const radioTest = document.querySelector("#radio-check");
+    const modalTest = document.querySelector(".modal");
+    const botonTest = document.querySelector(".boton");
+    const textTest = document.querySelector(".texto");
+    const modalView = document.querySelector("#venta_modal");
+    radioTest.addEventListener("click", testClick);
+    botonTest.addEventListener("click", testBoton);
+    function testClick(e) {
+      e.preventDefault();
+      modalTest.classList.remove("close");
+      textTest.innerText =
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit.";
+      modalView.style.display = "block";
+    }
+    function testBoton(e) {
+      e.preventDefault();
+      modalTest.classList.add("close");
+      modalView.style.display = "none";
+    }
+  </script>
+</html>
